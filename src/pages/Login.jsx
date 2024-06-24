@@ -9,25 +9,28 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const supabase = createClient('https://vjcvrexoovrhfmvntfna.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqY3ZyZXhvb3ZyaGZtdm50Zm5hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgzMzA3MzEsImV4cCI6MjAzMzkwNjczMX0.4C8uvY05S8SeMsQKd9jb3ydDwSGgve65DMWOiHjsf1E');
+  const supabase = createClient("https://vjcvrexoovrhfmvntfna.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqY3ZyZXhvb3ZyaGZtdm50Zm5hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgzMzA3MzEsImV4cCI6MjAzMzkwNjczMX0.4C8uvY05S8SeMsQKd9jb3ydDwSGgve65DMWOiHjsf1E");
 
-  const signIn = async (event) => {
-    event.preventDefault();
+    const signIn = async (event) => {
+      event.preventDefault();
 
-    const { error } = await supabase.auth.signInWithPassword({
-      username: username,
-      password: password,
-    });
-
-    if (error) {
-      alert("Could not authenticate user");
-      router.push("/login?message=Could not authenticate user");
-    } else {
-      alert("Welcome"+ username)
-      router.push("/protected");
-    }
-  };
-
+      const { data, error } = await supabase
+        .from('login')
+        .select('*')
+        .eq('username', username)
+        .eq('password', password);
+  
+      if (error || data.length === 0) {
+        // Authentication failed
+        alert("Could not authenticate user");
+        router.push("/login?message=Could not authenticate user");
+      } else {
+        // Authentication succeeded
+        alert("Welcome "+ username);
+      }
+    };
+  
+  
   return (
     <div className="col-md-12">
       <Nav />
