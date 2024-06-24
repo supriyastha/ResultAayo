@@ -1,7 +1,8 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
 import styles from "./page.module.css";
-import Nav from "@/components/Nav";
+import Home from "@/pages/Home";
 
-export default function Home() {
-  return <Nav />;
+export default function Main() {
+  return <Home />;
 }

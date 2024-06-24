@@ -13,7 +13,7 @@
 
 }
 
-.navbar a{
+.navComp{
     position: relative;
     font-size: 18px;
     color: white;
@@ -22,8 +22,7 @@
     margin-left: 40px;
 
 }
-
-.navbar a::before{
+.navComp::before{
     content: '';
     position: absolute;
     top: 100%;
@@ -32,11 +31,5 @@
     height: 2px;
     background:white;
     transition: .3s;
-
 }
-
-.navbar a:hover::before{
-    width: 100%;
-
-
-}
+.navComp:hover::before{ width: 100%;}
