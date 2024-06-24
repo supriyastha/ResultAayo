@@ -13,20 +13,29 @@
   .container input[type="password"] {
     width: 50%;
     padding: 15px;
-    margin: 10px 0;
+    margin: 20px 200px;
     border: none;
     background-color: white;
-    color: #fff;
+    color: black;
     border-radius: 5px;
   }
 .log{
-    display:flex;
+    display:block;
+    padding: 10rem;
+    align-content: center;
 }
+.log img{
+  width: auto;
+  height: 100px;
+  padding-left: 230px;
+}
+
   .container button {
     width: 10%;
     padding: 15px;
-    background-color: white;
-    color: black;
+    margin: 20px 510px;
+    background-color:#8AA4D6;
+    color:white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
